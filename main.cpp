@@ -32,16 +32,5 @@ int main(int argc, char** argv) {
     UserInterface ui;
     ui.start();
     ui.runQuery(words, authors, articles);
-//    vector<string> res = qp.processQuery(words, authors, "patient AND intent");
-//    for (int i = 0; i < 5 && i < res.size(); i++) {
-//        cout << res.at(i) << endl;
-//        Article* article = articles[res.at(i)];
-//        cout << article->getTitle() << " " << endl;
-//        vector<string>* authors = article->getAuthors();
-//        if (authors != nullptr) {
-//            for (string author : *authors) cout << author << " ";
-//        }
-//        cout << endl;
-//    }
     return 0;
 }
