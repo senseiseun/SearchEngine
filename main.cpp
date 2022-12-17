@@ -32,5 +32,6 @@ int main(int argc, char** argv) {
     UserInterface ui;
     ui.start();
     ui.runQuery(words, authors, articles);
+    ui.endQuery();
     return 0;
 }
