@@ -1,7 +1,7 @@
 <h1>COVID Search Engine</h1>
 <p>Seun Suberu</p>
-Info: Data Structures Final Project at Southern Methodist University. Redone December 2022.
-<h2>Kick Covid in the _____</h2>
+Info: Data Structures Final Project at Southern Methodist University. Remade on December 2022.
+<h2>Kick Covid in the Ass</h2>
 <h3>Description</h3>
 <p>This is a COVID Document Search Engine written in C++ and built using CMAKE that utilizes a self-implemented AVLTree for word storage and self-implemented HashTable for authors.
 The documents are ranked by term-frequency/inverse document frequency metric and indexed into self-made data structures. There is a command line user interface provided. Implemented own Hash Table and AVL Tree to store authors and stemmed words.
@@ -18,7 +18,7 @@ The documents are ranked by term-frequency/inverse document frequency metric and
 
     $ mkdir build
     $ cmake ..
-    $ ./SearchEngineTemplates {directory}
+    $ ./SearchEngine {directory}
 </p>
 <p>
     From there the program should run as expected. The program loads and indexes all the files and then the program should be ready for any queries.
@@ -27,7 +27,7 @@ The documents are ranked by term-frequency/inverse document frequency metric and
     AUTHOR: returns all results of particular author, but when AUTHOR is preceded by a word then the results are documents that contain that word from that author.<br>
     AND: Returns documents that contain the words before and after the KEYWORD.<br>
     OR: Returns documents that contain either the word before or the one after.<br>
-    NOT: Returns all documents that do not contain the particular word. Can be compounded with AND or ORs, but had to be the last keyword used in the query.<br> 
+    NOT: Returns all documents that do not contain the particular word. Can be compounded with AND or ORs, but had to be the last keyword used in the query and cannot be the only query.<br> 
     <br>
     Examples (THESE QUERIES ARE NOT GUARANTEED TO RETURN RESULTS):
 
@@ -43,7 +43,7 @@ The documents are ranked by term-frequency/inverse document frequency metric and
 </p>
 <p>
 
-    NOT covid
+    pizza NOT covid
 </p>
 
 <h3>HashTable</h3>
@@ -82,9 +82,4 @@ The documents are ranked by term-frequency/inverse document frequency metric and
     Wrapper class for stemmed word which also contains a collection of InnerDoc objects for keeping track of documents that contain the stemmed word.
 </p>
 
-<h3>InnerDoc Class</h3>
-<p> 
-    <b>Written and Implemented by Seun Suberu </b><br>
-    Utility class of Word class for storing specific document information.
-</p>
 
