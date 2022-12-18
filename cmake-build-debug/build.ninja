@@ -67,12 +67,6 @@ build CMakeFiles/untitled.dir/Util/HashSet/HashSet_test.cpp.o: CXX_COMPILER__unt
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Util/HashSet
 
-build CMakeFiles/untitled.dir/Indexer/Indexer.cpp.o: CXX_COMPILER__untitled_Debug /Users/seunsuberu/Documents/MiscProjects/SearchEngine/Indexer/Indexer.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Indexer/Indexer.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++14
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/Indexer
-
 build CMakeFiles/untitled.dir/Indexer/Article/Article.cpp.o: CXX_COMPILER__untitled_Debug /Users/seunsuberu/Documents/MiscProjects/SearchEngine/Indexer/Article/Article.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Indexer/Article/Article.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++14
@@ -135,7 +129,7 @@ build CMakeFiles/untitled.dir/UserInterface/UserInterface.cpp.o: CXX_COMPILER__u
 #############################################
 # Link the executable untitled
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Util/HashMap/HashMap_test.cpp.o CMakeFiles/untitled.dir/Util/HashSet/HashSet_test.cpp.o CMakeFiles/untitled.dir/Indexer/Indexer.cpp.o CMakeFiles/untitled.dir/Indexer/Article/Article.cpp.o CMakeFiles/untitled.dir/Indexer/Word/Word.cpp.o CMakeFiles/untitled.dir/Util/AVLTree/AVLTree_test.cpp.o CMakeFiles/untitled.dir/Indexer/Index/Index.cpp.o CMakeFiles/untitled.dir/Indexer/Author/Author.cpp.o CMakeFiles/untitled.dir/Indexer/Pair/Pair.cpp.o CMakeFiles/untitled.dir/Stemmer/porter2_stemmer.cpp.o CMakeFiles/untitled.dir/QueryProcessor/QueryProcessor.cpp.o CMakeFiles/untitled.dir/UserInterface/UserInterface.cpp.o
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Util/HashMap/HashMap_test.cpp.o CMakeFiles/untitled.dir/Util/HashSet/HashSet_test.cpp.o CMakeFiles/untitled.dir/Indexer/Article/Article.cpp.o CMakeFiles/untitled.dir/Indexer/Word/Word.cpp.o CMakeFiles/untitled.dir/Util/AVLTree/AVLTree_test.cpp.o CMakeFiles/untitled.dir/Indexer/Index/Index.cpp.o CMakeFiles/untitled.dir/Indexer/Author/Author.cpp.o CMakeFiles/untitled.dir/Indexer/Pair/Pair.cpp.o CMakeFiles/untitled.dir/Stemmer/porter2_stemmer.cpp.o CMakeFiles/untitled.dir/QueryProcessor/QueryProcessor.cpp.o CMakeFiles/untitled.dir/UserInterface/UserInterface.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :

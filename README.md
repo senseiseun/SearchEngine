@@ -1,6 +1,6 @@
 <h1>COVID Search Engine</h1>
 <p>Seun Suberu</p>
-Info: Data Structures Final Project at Southern Methodist University. Remade on December 2022.
+Info: Data Structures Final Project at Southern Methodist University. Remade on December 2022. <a href="https://github.com/senseisub/SearchEngine">Remodel of original project.</a>
 <h2>Kick Covid in the Ass</h2>
 <h3>Description</h3>
 <p>This is a COVID Document Search Engine written in C++ and built using CMAKE that utilizes a self-implemented AVLTree for word storage and self-implemented HashTable for authors.
