@@ -4,9 +4,11 @@
 
 #include <iostream>
 #include "../Util/HashMap/HashMap.h"
+#include "../Util/HashSet/HashSet.h"
 #include "../Util/AVLTree/AVLTree.h"
 #include "../Indexer/Author/Author.h"
 #include "../Indexer/Word/Word.h"
+#include "../Indexer/Article/Article.h"
 #include "../Stemmer/porter2_stemmer.h"
 #include "sstream"
 
@@ -18,13 +20,12 @@ using namespace std;
 class QueryProcessor {
 public:
     QueryProcessor() = default;
-    vector<Pair*> processAND(AVLTree<Word>& words, string& a, string& b);
-    vector<Pair*> processAND(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b);
-    vector<Pair*> processOR(AVLTree<Word>& words, string& a, string& b);
-    vector<Pair*> processOR(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b);
-    vector<Pair*> processNOT(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b);
-    void processDocumentVector(vector<Pair*>&);
-    vector<string> processQuery(AVLTree<Word>& words, HashMap<string, Author*>& authors, string query);
+    static vector<Pair*> processAND(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b);
+    static vector<Pair*> processOR(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b);
+    static vector<Pair*> processNOT(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b);
+    static vector<Pair*> processAUTHOR(HashMap<string, Author*>& authors, vector<Pair*>& wordVec1, string& b);
+    static void processDocumentVector(vector<Pair*>&);
+    static vector<string> processQuery(AVLTree<Word>& words, HashMap<string, Author*>& authors, HashMap<string, Article*>& articles, string& query);
 };
 
 

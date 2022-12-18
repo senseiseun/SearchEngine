@@ -93,7 +93,7 @@ public:
 
     long long int getKeyIndex(const K& key, int cap) {
         hash<K> myHashFunc;
-        long long unsigned int hash = myHashFunc(key);
+        unsigned long long hash = myHashFunc(key);
         return hash % cap;
     }
 

@@ -76,23 +76,6 @@ class AVLTree{
             inorder(node->right);
         }
 
-        void inorder15(Node*& node, int& count, char* documentPath){
-            if(node == nullptr || count > 13){ //13 ?????? why does this work
-                return;
-            }
-            this->inorder15(node->left, count, documentPath);
-            count++;
-            if(count > 15){
-                return;
-            }
-            cout << count << endl;
-            char initial[300];
-            strcpy(initial, documentPath);
-            const char* tempDoc = ("/"+ node->data.getID()+".json").c_str();
-            strcat(initial, tempDoc);
-                cout << node->data.getID() << "\n\tLocation: " << realpath(initial, NULL) << endl << endl;
-            this->inorder15(node->right, count, documentPath);
-        }
         void inorder(Node*& node, vector<t*>& vals){
             if(node == nullptr){
                 return;
@@ -101,6 +84,7 @@ class AVLTree{
             vals.push_back(&(node->data));
             inorder(node->right, vals);
         }
+        
         //searches AVLTree for key
         Node* search(Node*& root, const t& key, const int& differ){
             // Base Cases: root is null or key is present at root
@@ -176,6 +160,13 @@ class AVLTree{
             case4(k1);
         }
 
+    // height of the tree
+    int height(Node*& currentNode){
+        if (currentNode == nullptr)
+            return 0;
+        return currentNode->height;
+    }
+
     public:
         //default constructor
         AVLTree(){
@@ -194,27 +185,17 @@ class AVLTree{
         }
 
         // height of the tree
-        int height(Node*& currentNode){
-            if (currentNode == nullptr)
-                return 0;
-            return currentNode->height;
-        }
-
-        // height of the tree
         int height(){
             if (root == nullptr)
                 return 0;
             return root->height;
         }
 
-
         // A utility function to get maximum
         // of two integers
         int max(int a, int b){
             return (a > b)? a : b;
         }
-
-
 
         //public insert that starts the recursive insert process
         void insert(const t& data){
@@ -229,31 +210,22 @@ class AVLTree{
         int& getSize(){
             return this->size;
         }
-        //checks if value exists in tree
-        bool containsVal(const t& key){
-            if(search(this->root, key, 3) != nullptr){
-                return true;
-            }
-            return false;
-        }
+
         //checks if tree contains based on string value
         bool contains(const t& key){
             if(search(this->root, key) != nullptr)
                 return true;
             return false;
         }
-        //if it contains the value then returns the value
-        t& getObjValue(const t& key){
-            return (search(this->root, key, 3))->data;
-        }
+
         //if it contains the value corresponding to the string then returns the value
         t* getValue(const t& key){
             return &((search(this->root, key))->data);
         }
 
         //if it contains the value corresponding to the string then returns the value
-        t& operator [] (const t& key) const{
-            return (search(this->root, key))->data;
+        t* operator [] (const t& key) const{
+            return &(search(this->root, key))->data;
         }
 
         vector<t*> toArrayInOrder() {
@@ -261,25 +233,5 @@ class AVLTree{
             inorder(this->root, vals);
             return vals;
         }
-
-        void inorder15(char*& documentPath){
-            int i = 0;
-            inorder15(this->root, i, documentPath);
-        }
-
-        void forWords(){
-            emptyTreeForWord(this->root);
-        }
-
-        void forAuthors(){
-            emptyTreeForAuthors(this->root);
-        }
-
-        bool containsForSet(const t& key){
-            if(search(this->root, key, true) != nullptr)
-                return true;
-            return false;
-        }
-
 };
 #endif //SEARCHENGINETEMPLATES_AVLTREE_H

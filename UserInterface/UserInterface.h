@@ -16,11 +16,11 @@ using namespace std;
 class UserInterface {
 public:
     UserInterface()=default;
-    void start();
-    void clearConsole();
-    void runQuery(AVLTree<Word>& words, HashMap<string, Author*>& authors, HashMap<string, Article*>& articles);
-    void outputQueryResult(vector<string>& res, HashMap<string, Article*>& articles);
-    void endQuery();
+    static void start();
+    static void clearConsole();
+    static void runQuery(AVLTree<Word>& words, HashMap<string, Author*>& authors, HashMap<string, Article*>& articles);
+    static void outputQueryResult(vector<string>& res, HashMap<string, Article*>& articles);
+    static void endQuery();
 };
 
 

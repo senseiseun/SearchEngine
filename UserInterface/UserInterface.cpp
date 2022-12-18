@@ -5,8 +5,7 @@
 #include "UserInterface.h"
 
 void UserInterface::start() {
-    cout << "Seun's Search Engine" << endl;
-    cout << "||========================================||" << endl;
+    cout << "||=================Seun's Search Engine====================||" << endl;
 }
 
 void UserInterface::clearConsole() {
@@ -26,13 +25,13 @@ void UserInterface::runQuery(AVLTree<Word>& words, HashMap<string, Author*>& aut
         string line;
         getline(cin, line);
         QueryProcessor qp;
-        vector<string> res = qp.processQuery(words, authors, line);
+        vector<string> res = qp.processQuery(words, authors, articles, line);
         outputQueryResult(res, articles);
 
         cout << "\nWould you like to search again?" << endl;
         cout << "Y / N, clear, or print persistant file (PRINT): " << endl;
         string decision;
-        cin.ignore();
+        cin.clear();
         while (true) { //loop that waits for a Y/N/clear command. anything else returns invalid.
             getline(cin, decision);
             if (decision == "PRINT" || decision == "print" || decision == "Print") {
@@ -69,5 +68,5 @@ void UserInterface::outputQueryResult(vector<string> &res, HashMap<string, Artic
 }
 
 void UserInterface::endQuery() {
-    cout << "||========================================||" << endl;
+    cout << "||=================Seun's Search Engine====================||" << endl;
 }
