@@ -45,6 +45,14 @@ The documents are ranked by term-frequency/inverse document frequency metric and
 
     pizza NOT covid
 </p>
+<p>
+
+    pizza AUTHOR grant
+</p>
+<p>
+
+    pizza
+</p>
 
 <h3>HashTable</h3>
 <p> 
