@@ -71,10 +71,9 @@ bool Word::hasDocument(string &documentID) {
 
 void Word::increaseDocumentFrequency(string& documentID){
     docTree->getValue(*(new Pair(documentID)))->count++;
-    Pair* doc = (docTree->getValue(*(new Pair(documentID))));
 }
 string Word::getDocument(string& documentID){
-    return docTree->getValue(documentID)->word;
+    return docTree->getValue(*(new Pair(documentID)))->word;
 }
 
 void Word::newDoc(string& documentID, string& documentTitle, string& firstAuthor){

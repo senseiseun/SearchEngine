@@ -18,9 +18,10 @@ public:
     UserInterface()=default;
     static void start();
     static void clearConsole();
-    static void runQuery(AVLTree<Word>& words, HashMap<string, Author*>& authors, HashMap<string, Article*>& articles);
-    static void outputQueryResult(vector<string>& res, HashMap<string, Article*>& articles);
+    static void runQuery(AVLTree<Word>& words, HashMap<string, Author*>& authors, HashMap<string, Article*>& articles, char* directory);
+    static void outputQueryResult(vector<string>& res, HashMap<string, Article*>& articles, string& directory);
     static void endQuery();
+    static string retrivePreview(string& doc, string& dir);
 };
 
 

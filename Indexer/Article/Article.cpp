@@ -4,25 +4,32 @@
 
 #include "Article.h"
 
+#include <utility>
+
 Article::Article(string articleTitle, string printCopy, string datePublished, string articleID){
-    this->articleID = articleID;
-    this->printCopy = printCopy;
-    this->datePublished = datePublished;
-    this->articleTitle = articleTitle;
+    this->articleID = std::move(articleID);
+    this->printCopy = std::move(printCopy);
+    this->datePublished = std::move(datePublished);
+    this->articleTitle = std::move(articleTitle);
     this->authors = new vector<string>();
     this->ratio = 0;
 }
 
 Article::Article(string articleTitle, string articleID){
-    this->articleID = articleID;
-    this->articleTitle = articleTitle;
+    this->articleID = std::move(articleID);
+    this->articleTitle = std::move(articleTitle);
     this->authors = new vector<string>();
     this->ratio = 0;
+}
+
+Article::~Article() {
+    delete[] this->authors;
 }
 
 string& Article::getPrintCopy(){
     return this->printCopy;
 }
+
 string& Article::getTitle(){
     return this->articleTitle;
 }
@@ -41,8 +48,8 @@ void Article::addAuthor(string& author) {
     this->authors->push_back(author);
 }
 
-void Article::setRatio(double ratio) {
-    this->ratio = ratio;
+void Article::setRatio(double newRatio) {
+    this->ratio = newRatio;
 }
 
 double Article::getRatio() {

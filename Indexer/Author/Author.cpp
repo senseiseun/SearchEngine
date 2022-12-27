@@ -4,9 +4,15 @@
 
 #include "Author.h"
 
+#include <utility>
+
 Author::Author(string authorName){
-    this->name = authorName;
+    this->name = std::move(authorName);
     articles = new vector<Pair>();
+}
+
+Author::~Author() {
+    delete[] this->articles;
 }
 
 void Author::printCopy(){
@@ -18,8 +24,8 @@ string& Author::getAuthorName(){
 vector<string> Author::getArticleList(){
     vector<Pair> res = *(this->articles);
     vector<string> returningArray;
-    for (int i = 0; i < res.size(); i++) {
-        returningArray.push_back(res.at(i).word);
+    for (auto & article : res) {
+        returningArray.push_back(article.word);
     }
     return returningArray;
 }
@@ -32,7 +38,7 @@ bool Author::operator > (const Author& author) const{
 }
 
 bool Author::operator == (const Author& author) const{
-    return this->name.compare(author.name)  == 0;
+    return this->name  == author.name;
 }
 
 void Author::addArticles(string& article) {

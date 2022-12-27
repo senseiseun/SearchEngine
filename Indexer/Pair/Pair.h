@@ -12,7 +12,7 @@ class Pair {
 public:
     string word;
     int count;
-    Pair (string word);
+    explicit Pair (string word);
     Pair (string word, int count);
     Pair();
     bool operator<(const Pair& rhs) const;

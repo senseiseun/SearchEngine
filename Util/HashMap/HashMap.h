@@ -62,7 +62,7 @@ public:
         growthFactor = other.growthFactor;
     }
     // TODO
-    HashMap(HashMap* other) {
+    explicit HashMap(HashMap* other) {
         capacity = other->capacity;
         size = other->size;
         base = new list<Pair*>[capacity];

@@ -15,7 +15,7 @@ using namespace std;
 
 class Index {
 public:
-    int build(const char* dir, HashMap<string, Author*>& authors, AVLTree<Word>& words, HashMap<string, Article*>& articles);
+    static int build(const char* dir, HashMap<string, Author*>& authors, AVLTree<Word>& words, HashMap<string, Article*>& articles);
 };
 
 

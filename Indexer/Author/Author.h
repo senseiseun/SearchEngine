@@ -13,7 +13,7 @@ class Author{
         vector<Pair>* articles;
     public:
         Author(){}
-        ~Author(){delete this->articles;}
+        ~Author();
         Author(string);
         void printCopy();
         string& getAuthorName();

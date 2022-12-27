@@ -7,9 +7,7 @@
 #include <fstream>
 #include "../../rapidjson/include/rapidjson/document.h"
 #include "../../rapidjson/include/rapidjson/writer.h"
-#include "../../rapidjson/include/rapidjson/stringbuffer.h"
-#include "../../rapidjson/include/rapidjson/filereadstream.h"
-#include <ctype.h>
+#include <cctype>
 #include <sstream>
 #include "../../rapidjson/include/rapidjson/istreamwrapper.h"
 #include "../../Util/HashSet/HashSet.h"
@@ -27,24 +25,20 @@ int Index::build(const char* dir, HashMap<string, Author*>& authors, AVLTree<Wor
     DIR *pDIR;
     struct dirent *entry;
     int num = 0;
-    if( pDIR=opendir(dir) ) {
+    pDIR = opendir(dir);
+    if(pDIR) {
         cout << "Directory found!" << endl << endl;
         cout << "Loading. . ." << endl;
-
-        while (entry = readdir(pDIR)) {
+        entry = readdir(pDIR);
+        while (entry) {
             if (strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) {
                 num++;
-                if (num == 5) return 0;
-                cout << words.getSize() << " " << authors.getSize() << " " << words.height() << endl;
                 // 1. Parse a JSON string into DOM.
                 char str[100];
                 strcpy(str, dir);
                 strcat(str, "/");
                 string fullname = str;
                 fullname += entry->d_name; //change from char* to string because json / strcat didnt accept string?
-
-                const char * c = fullname.c_str();
-
                 std::ifstream ifs{fullname};
                 if (!ifs.is_open()) {
                     std::cerr << "Could not open file for reading!\n";
@@ -65,7 +59,7 @@ int Index::build(const char* dir, HashMap<string, Author*>& authors, AVLTree<Wor
                 string documentID = d["paper_id"].GetString();
                 string title = d["metadata"]["title"].GetString();
 
-                Article* article = new Article(title, documentID);
+                auto* article = new Article(title, documentID);
                 // add new article
                 articles.put(documentID, article);
 
@@ -73,10 +67,10 @@ int Index::build(const char* dir, HashMap<string, Author*>& authors, AVLTree<Wor
                 for (int i = 0; i < d["metadata"]["authors"].GetArray().Size(); i++) {
                     string first = d["metadata"]["authors"].GetArray()[i]["first"].GetString();
                     string last = d["metadata"]["authors"].GetArray()[i]["last"].GetString();
-                    if(firstAuthor.size() == 0)
+                    if(firstAuthor.empty())
                         firstAuthor = last;
                     //put first and last name in one word with no space
-                    if(last.size() == 0){
+                    if(last.empty()){
                         continue;
                     }
                     transform(last.begin(), last.end(), last.begin(), ::tolower);
@@ -100,6 +94,7 @@ int Index::build(const char* dir, HashMap<string, Author*>& authors, AVLTree<Wor
             if (num == 100) {
                 return num;
             }
+            entry = readdir(pDIR);
         }
         closedir(pDIR);
     }
@@ -157,5 +152,5 @@ int initializeStopWords(HashSet<string>& stops) {
     while(ifs >> str) {
         stops.add(str);
     }
-
+    return 0;
 }

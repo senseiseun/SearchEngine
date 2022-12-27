@@ -4,12 +4,14 @@
 
 #include "Pair.h"
 
+#include <utility>
+
 Pair::Pair (string word) {
-    this->word = word;
+    this->word = std::move(word);
     this->count = 0;
 }
 Pair::Pair (string word, int count) {
-    this->word = word;
+    this->word = std::move(word);
     this->count = count;
 }
 Pair::Pair() {
@@ -22,5 +24,5 @@ bool Pair::operator > (const Pair& rhs) const {
     return this->word.compare(rhs.word) > 0;
 }
 bool Pair::operator == (const Pair& rhs) const {
-    return this->word.compare(rhs.word) == 0;
+    return this->word == rhs.word;
 }

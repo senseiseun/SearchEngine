@@ -8,9 +8,8 @@
 #include "Indexer/Index/Index.h"
 #include "QueryProcessor/QueryProcessor.h"
 #include "UserInterface//UserInterface.h"
-#define TEST true
 
-int runCatchTests(int argc, char* const argv[])
+int runCatchTests()
 {
     //This line of code causes the Catch library to
     //run the tests in the project.
@@ -21,17 +20,14 @@ int runCatchTests(int argc, char* const argv[])
 int main(int argc, char** argv) {
     if (argc == 1)
     {
-        return runCatchTests(argc, argv);
+        return runCatchTests();
     }
     HashMap<string, Author*> authors;
     AVLTree<Word> words;
     HashMap<string, Article*> articles;
-    Index indexer;
-    indexer.build(argv[1], authors, words, articles);
-    QueryProcessor qp;
-    UserInterface ui;
-    ui.start();
-    ui.runQuery(words, authors, articles);
-    ui.endQuery();
+    Index::build(argv[1], authors, words, articles);
+    UserInterface::start();
+    UserInterface::runQuery(words, authors, articles, argv[1]);
+    UserInterface::endQuery();
     return 0;
 }

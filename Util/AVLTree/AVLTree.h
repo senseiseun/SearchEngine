@@ -17,7 +17,7 @@ class AVLTree{
                 Node* left;
                 Node* right;
                 int height;
-                Node(const t& data){
+                explicit Node(const t& data){
                     this->data = data;
                     height = 0;
                     left = nullptr;
@@ -84,46 +84,33 @@ class AVLTree{
             vals.push_back(&(node->data));
             inorder(node->right, vals);
         }
-        
-        //searches AVLTree for key
-        Node* search(Node*& root, const t& key, const int& differ){
-            // Base Cases: root is null or key is present at root
-            if (root == nullptr || root->data == key)
-                return root;
 
-            // Key is greater than root's key
-            if (key > root->data)
-                return search(root->right, key);
-
-            // Key is smaller than root's key
-            return search(root->left, key);
-        }
         //searches an AVLTree based on name
-        Node* search(Node*& root, const t& key){
+        Node* search(Node*& curr, const t& key){
             // Base Cases: root is null or key is present at root
-            if (root == nullptr || root->data == key)
-                return root;
+            if (curr == nullptr || curr->data == key)
+                return curr;
 
             // Key is greater than root's key
-            if (root->data < key)
-                return search(root->right, key);
+            if (curr->data < key)
+                return search(curr->right, key);
 
             // Key is smaller than root's key
-            return search(root->left, key);
+            return search(curr->left, key);
         }
 
         //searches an AVLTree based on name
-        Node* search(Node*& root, const t& key, const bool& set){
+        Node* search(Node*& curr, const t& key, const bool& set){
             // Base Cases: root is null or key is present at root
-            if (root == nullptr || root->data == key)
-                return root;
+            if (curr == nullptr || curr->data == key)
+                return curr;
 
             // Key is greater than root's key
-            if (root->data < key)
-                return search(root->right, key, set);
+            if (curr->data < key)
+                return search(curr->right, key, set);
 
             // Key is smaller than root's key
-            return search(root->left, key, set);
+            return search(curr->left, key, set);
         }
 
         //left left rotation

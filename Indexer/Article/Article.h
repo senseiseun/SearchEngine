@@ -20,6 +20,7 @@ private:
 public:
     Article(string, string, string, string);
     Article(string, string);
+    ~Article();
     string& getPrintCopy();
     string& getTitle();
     string& getDatePub();

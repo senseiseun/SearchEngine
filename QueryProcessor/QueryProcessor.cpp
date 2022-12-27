@@ -9,7 +9,8 @@ vector<Pair*> QueryProcessor::processAND(AVLTree<Word>& words, vector<Pair*>& wo
     HashMap<string, Pair*> set1;
     HashMap<string, Pair*> set2;
     Porter2Stemmer::stem(b);
-    if (words.contains(b)) {
+    Word compTemp(b);
+    if (words.contains(compTemp)) {
         res2->setWord(b);
         res2 = words.getValue(*res2);
     }
@@ -32,7 +33,8 @@ vector<Pair*> QueryProcessor::processAND(AVLTree<Word>& words, vector<Pair*>& wo
 vector<Pair*> QueryProcessor::processOR(AVLTree<Word>& words, vector<Pair*>& wordVec1, string& b) {
     Word* res2 = new Word();
     Porter2Stemmer::stem(b);
-    if (words.contains(b)) {
+    Word compTemp(b);
+    if (words.contains(compTemp)) {
         res2->setWord(b);
         res2 = words.getValue(*res2);
     }
@@ -82,7 +84,8 @@ vector<Pair*> QueryProcessor::processNOT(AVLTree<Word>& words, vector<Pair*>& wo
     for (Pair* pair: wordVec1) {
         set1.put(pair->word, pair);
     }
-    if (words.contains(b)) {
+    Word compTemp(b);
+    if (words.contains(compTemp)) {
         res2->setWord(b);
         res2 = words.getValue(*res2);
     }

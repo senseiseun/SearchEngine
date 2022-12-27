@@ -22,7 +22,7 @@ private:
 public:
     Word();
     //the only constructor to be used
-    Word(string& newWord);
+    explicit Word(string& newWord);
     ~Word();
     //utility function to increase frequency
     void increaseFreq();
